@@ -533,7 +533,7 @@ h2 {
 /* Responsive - Mobile */
 @media (max-width: 640px) {
   .container {
-    padding: 12px 8px;
+    padding: 12px 8px 80px 8px;
   }
 
   .card {
@@ -701,7 +701,7 @@ h2 {
     .container {
       padding-left: max(8px, env(safe-area-inset-left));
       padding-right: max(8px, env(safe-area-inset-right));
-      padding-bottom: max(16px, env(safe-area-inset-bottom));
+      padding-bottom: max(80px, calc(80px + env(safe-area-inset-bottom)));
     }
   }
 }
