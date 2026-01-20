@@ -3,7 +3,7 @@
     "title": "Ngân Hàng Câu Hỏi Ôn Thi Pháp Luật Đại Cương K45 HK2 (Full)",
     "creator": "Ngô Minh Khôi-DH19BQ",
     "description": "Dữ liệu đầy đủ bao gồm điền khuyết, tình huống và trắc nghiệm tổng hợp từ tài liệu ôn tập.",
-    "total_questions": 116
+    "total_questions": 169
   },
   "questions": [
     {
@@ -1388,6 +1388,623 @@
         { "id": "B", "text": "Quy phạm pháp luật, chế định pháp luật và ngành luật", "is_correct": false },
         { "id": "C", "text": "Tập hợp hóa và pháp điển hóa", "is_correct": false },
         { "id": "D", "text": "Tất cả đều sai", "is_correct": false }
+      ]
+    },
+    {
+      "id": 117,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Nhà nước pháp quyền XHCN VN là nhà nước mà ở đó quyền lực nhà nước là thống nhất về 1 cơ quan có phân công, phối hợp, ______.",
+      "answer": "kiểm soát",
+      "explanation": "Nguyên tắc tổ chức quyền lực nhà nước."
+    },
+    {
+      "id": 118,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Năng lực hành vi là những khả năng của chủ thể pháp luật được nhà nước thừa nhận, bằng chính các ______ của mình tham gia vào các quan hệ pháp luật.",
+      "answer": "hành vi",
+      "explanation": "Khái niệm năng lực hành vi."
+    },
+    {
+      "id": 119,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Văn bản áp dụng pháp luật có tính ______, một lần đối với các cá nhân, tổ chức cụ thể trong những trường hợp xác định.",
+      "answer": "cá biệt",
+      "explanation": "Đặc điểm của văn bản áp dụng pháp luật."
+    },
+    {
+      "id": 120,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Hoạt động tương tự quy phạm pháp luật chỉ được tiến hành khi KHÔNG có ______ trực tiếp điều chỉnh vụ việc đó.",
+      "answer": "quy phạm pháp luật",
+      "explanation": "Điều kiện áp dụng tương tự pháp luật."
+    },
+    {
+      "id": 121,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Củng cố và tăng cường pháp chế XHCN chính là củng cố và tăng cường hiệu lực của ______ trong hoạt động quản lí xã hội.",
+      "answer": "bộ máy nhà nước",
+      "explanation": "Mục đích củng cố pháp chế."
+    },
+    {
+      "id": 122,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Bác sĩ tiêm kháng sinh nhưng bỏ qua quy trình không kiểm tra thử phản ứng, dẫn đến bệnh nhân sốc thuốc và chết. Bác sĩ chịu trách nhiệm gì?",
+      "options": [
+        { "id": "A", "text": "Trách nhiệm Dân sự", "is_correct": false },
+        { "id": "B", "text": "Trách nhiệm Hình sự và Kỷ luật", "is_correct": true },
+        { "id": "C", "text": "Chỉ trách nhiệm Kỷ luật", "is_correct": false },
+        { "id": "D", "text": "Không chịu trách nhiệm", "is_correct": false }
+      ]
+    },
+    {
+      "id": 123,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Trong yêu cầu cơ bản của pháp chế XHCN, để đảm bảo nguyên tắc thống nhất cần phải?",
+      "options": [
+        { "id": "A", "text": "Tôn trọng tính tối cao và địa vị tối cao của Hiến pháp và pháp luật", "is_correct": false },
+        { "id": "B", "text": "Đảm bảo tính thống nhất của pháp chế trong phạm vi cả nước", "is_correct": false },
+        { "id": "C", "text": "Cả A và B đều đúng", "is_correct": true },
+        { "id": "D", "text": "Cả A và B đều sai", "is_correct": false }
+      ]
+    },
+    {
+      "id": 124,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Một trong những đảm bảo đối với pháp chế XHCN có ý nghĩa là cơ sở của tất cả những bảo đảm khác, đó là?",
+      "options": [
+        { "id": "A", "text": "Chính trị", "is_correct": false },
+        { "id": "B", "text": "Kinh tế", "is_correct": true },
+        { "id": "C", "text": "Pháp lí", "is_correct": false },
+        { "id": "D", "text": "Tư tưởng", "is_correct": false }
+      ]
+    },
+    {
+      "id": 125,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Quy phạm pháp luật xác định rõ trách nhiệm pháp lí của các chủ thể khi nào?",
+      "options": [
+        { "id": "A", "text": "Vi phạm nghĩa vụ pháp lí", "is_correct": false },
+        { "id": "B", "text": "Ngăn cản sự thực hiện quyền của chủ thể khác", "is_correct": false },
+        { "id": "C", "text": "A và B đều đúng", "is_correct": true },
+        { "id": "D", "text": "A và B đều sai", "is_correct": false }
+      ]
+    },
+    {
+      "id": 126,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Khẳng định nào sau đây là đúng về hành vi vi phạm pháp luật?",
+      "options": [
+        { "id": "A", "text": "Hành vi VPPL không phải là hành vi thực hiện pháp luật", "is_correct": true },
+        { "id": "B", "text": "Hành vi VPPL là hành vi thực hiện pháp luật", "is_correct": false },
+        { "id": "C", "text": "Cả A và B đều đúng", "is_correct": false },
+        { "id": "D", "text": "Cả A và B đều sai", "is_correct": false }
+      ]
+    },
+    {
+      "id": 127,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Lợi ích vật chất hoặc tinh thần của chủ thể trong QHPL mà họ mong muốn đạt được là?",
+      "options": [
+        { "id": "A", "text": "Đối tượng của QHPL", "is_correct": false },
+        { "id": "B", "text": "Khách thể của QHPL", "is_correct": false },
+        { "id": "C", "text": "Mục đích của QHPL", "is_correct": true },
+        { "id": "D", "text": "Nội dung của QHPL", "is_correct": false }
+      ]
+    },
+    {
+      "id": 128,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Khả năng nhận thức và khả năng điều khiển hành vi của mình tại thời điểm thực hiện hành vi là?",
+      "options": [
+        { "id": "A", "text": "Năng lực pháp luật", "is_correct": false },
+        { "id": "B", "text": "Năng lực trách nhiệm pháp lí", "is_correct": true },
+        { "id": "C", "text": "Năng lực hành chính", "is_correct": false },
+        { "id": "D", "text": "Tất cả đều đúng", "is_correct": false }
+      ]
+    },
+    {
+      "id": 129,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Một trong những biểu hiện của lỗi vô ý do quá tự tin là?",
+      "options": [
+        { "id": "A", "text": "Tin tưởng hậu quả không xảy ra hoặc xảy ra mà ko ngăn ngừa được", "is_correct": true },
+        { "id": "B", "text": "Mong muốn cho hậu quả xảy ra", "is_correct": false },
+        { "id": "C", "text": "Để mặc cho hậu quả xảy ra", "is_correct": false },
+        { "id": "D", "text": "Phải thấy trước hậu quả xảy ra nhưng không thấy", "is_correct": false }
+      ]
+    },
+    {
+      "id": 130,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Đặc điểm của hành vi tham nhũng là?",
+      "options": [
+        { "id": "A", "text": "Hành vi của những người có chức vụ quyền hạn", "is_correct": false },
+        { "id": "B", "text": "Người có chức vụ quyền hạn lợi dụng chức vụ để trục lợi", "is_correct": false },
+        { "id": "C", "text": "A và B đều đúng", "is_correct": true },
+        { "id": "D", "text": "A và B đều sai", "is_correct": false }
+      ]
+    },
+    {
+      "id": 131,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Điều kiện làm phát sinh thay đổi hay chấm dứt 1 mối quan hệ pháp luật là?",
+      "options": [
+        { "id": "A", "text": "Khi có QPPL điều chỉnh", "is_correct": false },
+        { "id": "B", "text": "Xuất hiện chủ thể pháp luật trong quan hệ cụ thể", "is_correct": false },
+        { "id": "C", "text": "Khi xảy ra sự kiện pháp lí có liên quan", "is_correct": false },
+        { "id": "D", "text": "Tất cả đều đúng", "is_correct": true }
+      ]
+    },
+    {
+      "id": 132,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Quy phạm pháp luật là quy tắc xử sự do nhà nước quy định để áp dụng trong?",
+      "options": [
+        { "id": "A", "text": "Hoàn cảnh cụ thể", "is_correct": false },
+        { "id": "B", "text": "Nhiều hoàn cảnh cụ thể (lặp đi lặp lại)", "is_correct": true },
+        { "id": "C", "text": "Một lần duy nhất", "is_correct": false },
+        { "id": "D", "text": "Riêng cho một người", "is_correct": false }
+      ]
+    },
+    {
+      "id": 133,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Nhà nước giành quyền tác động vào QHPL bằng sự cưỡng chế trong những trường hợp nào?",
+      "options": [
+        { "id": "A", "text": "Nhà nước thấy ko cần thiết cho tiếp tục duy trì quan hệ ấy nữa", "is_correct": false },
+        { "id": "B", "text": "Khi có hành vi VPPL", "is_correct": false },
+        { "id": "C", "text": "Một bên trốn tránh trách nhiệm về hậu quả gây ra", "is_correct": false },
+        { "id": "D", "text": "Tất cả đều đúng", "is_correct": true }
+      ]
+    },
+    {
+      "id": 134,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Năng lực hành vi của pháp nhân được thực hiện bởi ai?",
+      "options": [
+        { "id": "A", "text": "Các thành viên tham gia thành lập pháp nhân", "is_correct": false },
+        { "id": "B", "text": "Đại diện theo pháp luật của pháp nhân", "is_correct": false },
+        { "id": "C", "text": "Đại diện theo ủy quyền của pháp nhân", "is_correct": false },
+        { "id": "D", "text": "Cả B và C đều đúng", "is_correct": true }
+      ]
+    },
+    {
+      "id": 135,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Biện pháp cưỡng chế nào sau đây là hình phạt (khác)?",
+      "options": [
+        { "id": "A", "text": "Phạt tiền", "is_correct": true },
+        { "id": "B", "text": "Bắt tạm giam (Biện pháp ngăn chặn)", "is_correct": false },
+        { "id": "C", "text": "Đưa vào trường giáo dưỡng (Biện pháp xử lý hành chính)", "is_correct": false },
+        { "id": "D", "text": "Tất cả đều sai", "is_correct": false }
+      ]
+    },
+    {
+      "id": 136,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Tình huống trộm cắp: P bẻ khoá, D và N vào lấy trộm. Yếu tố nào thuộc mặt khách quan?",
+      "options": [
+        { "id": "A", "text": "P bẻ khoá mở cửa cho đồng bọn", "is_correct": false },
+        { "id": "B", "text": "Số tài sản trộm cắp được (Hậu quả/Tang vật)", "is_correct": false },
+        { "id": "C", "text": "Cả A và B đúng", "is_correct": true },
+        { "id": "D", "text": "Nhà anh V mất trộm đêm 5/6", "is_correct": false }
+      ]
+    },
+    {
+      "id": 137,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Tình huống trộm cắp: Toà tuyên phạt P 12 năm tù. Xác định loại tội phạm của P?",
+      "options": [
+        { "id": "A", "text": "Nghiêm trọng", "is_correct": false },
+        { "id": "B", "text": "Rất nghiêm trọng (Khung hình phạt cao nhất từ 7-15 năm)", "is_correct": true },
+        { "id": "C", "text": "Đặc biệt nghiêm trọng", "is_correct": false },
+        { "id": "D", "text": "Ít nghiêm trọng", "is_correct": false }
+      ]
+    },
+    {
+      "id": 138,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Tình huống trộm cắp: D đang hưởng án treo 3 năm (đã chấp hành 1 năm) thì phạm tội mới (bị phạt 7 năm). Tổng hợp hình phạt?",
+      "options": [
+        { "id": "A", "text": "10 năm tù giam (7 năm mới + 3 năm cũ chuyển thành tù giam)", "is_correct": true },
+        { "id": "B", "text": "8 năm rưỡi tù giam", "is_correct": false },
+        { "id": "C", "text": "9 năm tù giam", "is_correct": false },
+        { "id": "D", "text": "7 năm tù giam", "is_correct": false }
+      ]
+    },
+    {
+      "id": 139,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Trong những nhận định sau, nhận định nào KHÔNG phải là đặc trưng của nhà nước?",
+      "options": [
+        { "id": "A", "text": "Phân chia lãnh thổ và quản lý dân cư", "is_correct": false },
+        { "id": "B", "text": "Thiết lập trên cơ sở các giai cấp đối kháng trong xã hội (Nguồn gốc, không phải đặc trưng)", "is_correct": true },
+        { "id": "C", "text": "Có chủ quyền quốc gia", "is_correct": false },
+        { "id": "D", "text": "Ban hành pháp luật", "is_correct": false }
+      ]
+    },
+    {
+      "id": 140,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Câu nào sau đây KHÔNG đúng về Quốc hội?",
+      "options": [
+        { "id": "A", "text": "Là cơ quan đại diện cao nhất của nhân dân", "is_correct": false },
+        { "id": "B", "text": "Là cơ quan quyền lực nhà nước cao nhất", "is_correct": false },
+        { "id": "C", "text": "Là cơ quan trong hệ thống cơ quan tư pháp", "is_correct": true },
+        { "id": "D", "text": "Là cơ quan giám sát tối cao", "is_correct": false }
+      ]
+    },
+    {
+      "id": 141,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Hội đồng nhân dân là?",
+      "options": [
+        { "id": "A", "text": "Cơ quan quyền lực nhà nước ở địa phương", "is_correct": false },
+        { "id": "B", "text": "Do nhân dân địa phương gián tiếp bầu ra (Sai, trực tiếp bầu)", "is_correct": false },
+        { "id": "C", "text": "Cơ quan chấp hành của Quốc hội", "is_correct": false },
+        { "id": "D", "text": "Câu A đúng (theo văn bản luật)", "is_correct": true }
+      ]
+    },
+    {
+      "id": 142,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Chủ thể tham gia quan hệ pháp luật cần phải có đầy đủ các loại năng lực nào?",
+      "options": [
+        { "id": "A", "text": "Năng lực chủ thể", "is_correct": false },
+        { "id": "B", "text": "Năng lực pháp luật", "is_correct": false },
+        { "id": "C", "text": "Năng lực hành vi", "is_correct": false },
+        { "id": "D", "text": "Cả B và C (hợp thành Năng lực chủ thể)", "is_correct": true }
+      ]
+    },
+    {
+      "id": 143,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Đặc điểm của văn bản quy phạm pháp luật là?",
+      "options": [
+        { "id": "A", "text": "Do cơ quan nhà nước có thầm quyền ban hành", "is_correct": false },
+        { "id": "B", "text": "Chứa đựng các quy tắc xử sự mang tính bắt buộc chung", "is_correct": false },
+        { "id": "C", "text": "Được áp dụng nhiều lần trong đời sống", "is_correct": false },
+        { "id": "D", "text": "Cả A, B, C đều đúng", "is_correct": true }
+      ]
+    },
+    {
+      "id": 144,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Bộ phận giả định của quy phạm pháp luật nói đến các yếu tố nào?",
+      "options": [
+        { "id": "A", "text": "Hoàn cảnh, điều kiện", "is_correct": false },
+        { "id": "B", "text": "Thời gian, địa điểm", "is_correct": false },
+        { "id": "C", "text": "Chủ thể", "is_correct": false },
+        { "id": "D", "text": "Hoàn cảnh, điều kiện, thời gian, địa điểm, chủ thể...", "is_correct": true }
+      ]
+    },
+    {
+      "id": 145,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Điểm nào sau đây KHÔNG phải là đặc điểm của quan hệ pháp luật?",
+      "options": [
+        { "id": "A", "text": "Là quan hệ xã hội", "is_correct": false },
+        { "id": "B", "text": "Không mang tính ý chí", "is_correct": true },
+        { "id": "C", "text": "Được bảo đảm thực hiện bằng cưỡng chế", "is_correct": false },
+        { "id": "D", "text": "Xuất hiện trên cơ sở QPPL", "is_correct": false }
+      ]
+    },
+    {
+      "id": 146,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Mặt chủ quan của vi phạm pháp luật bao gồm?",
+      "options": [
+        { "id": "A", "text": "Lỗi", "is_correct": false },
+        { "id": "B", "text": "Động cơ", "is_correct": false },
+        { "id": "C", "text": "Mục đích", "is_correct": false },
+        { "id": "D", "text": "Cả A, B, C đều đúng", "is_correct": true }
+      ]
+    },
+    {
+      "id": 147,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Chủ tịch nước có quyền ban hành văn bản nào?",
+      "options": [
+        { "id": "A", "text": "Lệnh, Quyết định", "is_correct": true },
+        { "id": "B", "text": "Lệnh, Chỉ thị", "is_correct": false },
+        { "id": "C", "text": "Nghị quyết", "is_correct": false },
+        { "id": "D", "text": "Thông tư", "is_correct": false }
+      ]
+    },
+    {
+      "id": 148,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Ủy ban thường vụ Quốc hội có quyền ban hành?",
+      "options": [
+        { "id": "A", "text": "Pháp lệnh, Nghị quyết", "is_correct": true },
+        { "id": "B", "text": "Luật", "is_correct": false },
+        { "id": "C", "text": "Nghị định", "is_correct": false },
+        { "id": "D", "text": "Thông tư", "is_correct": false }
+      ]
+    },
+    {
+      "id": 149,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Bộ Giáo dục và Đào tạo có quyền ban hành?",
+      "options": [
+        { "id": "A", "text": "Quyết định, thông tư, chỉ thị", "is_correct": true },
+        { "id": "B", "text": "Luật", "is_correct": false },
+        { "id": "C", "text": "Nghị định", "is_correct": false },
+        { "id": "D", "text": "Không được ban hành VBQPPL", "is_correct": false }
+      ]
+    },
+    {
+      "id": 150,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Loại văn bản quy phạm pháp luật nào sau đây là văn bản luật?",
+      "options": [
+        { "id": "A", "text": "Hiến pháp, đạo luật (bộ luật)", "is_correct": true },
+        { "id": "B", "text": "Pháp lệnh", "is_correct": false },
+        { "id": "C", "text": "Nghị định", "is_correct": false },
+        { "id": "D", "text": "Thông tư", "is_correct": false }
+      ]
+    },
+    {
+      "id": 151,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Di chúc có thể được lập dưới các hình thức sau:",
+      "options": [
+        { "id": "A", "text": "Văn bản không có người làm chứng", "is_correct": false },
+        { "id": "B", "text": "Văn bản có người làm chứng", "is_correct": false },
+        { "id": "C", "text": "Văn bản được chứng nhận, chứng thực", "is_correct": false },
+        { "id": "D", "text": "Cả A, B, C đều đúng", "is_correct": true }
+      ]
+    },
+    {
+      "id": 152,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Tính giai cấp của nhà nước thể hiện ở chỗ?",
+      "options": [
+        { "id": "A", "text": "Nhà nước là một bộ máy trấn áp giai cấp", "is_correct": false },
+        { "id": "B", "text": "Nhà nước là một bộ máy của giai cấp này thống trị giai cấp khác", "is_correct": false },
+        { "id": "C", "text": "Nhà nước ra đời là sản phẩm của xã hội có giai cấp", "is_correct": false },
+        { "id": "D", "text": "Cả A, B, C đều đúng", "is_correct": true }
+      ]
+    },
+    {
+      "id": 153,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Chủ quyền quốc gia là?",
+      "options": [
+        { "id": "A", "text": "Quyền độc lập tự quyết của quốc gia trong lĩnh vực đối nội", "is_correct": false },
+        { "id": "B", "text": "Quyền độc lập tự quyết của quốc gia trong lĩnh vực đối ngoại", "is_correct": false },
+        { "id": "C", "text": "Quyền ban hành văn bản pháp luật", "is_correct": false },
+        { "id": "D", "text": "Cả A và B đều đúng (theo ngữ cảnh tài liệu)", "is_correct": true }
+      ]
+    },
+    {
+      "id": 154,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Tính giai cấp của pháp luật thể hiện ở chỗ?",
+      "options": [
+        { "id": "A", "text": "Pháp luật là sản phẩm của xã hội có giai cấp", "is_correct": false },
+        { "id": "B", "text": "Pháp luật là ý chí của giai cấp thống trị", "is_correct": false },
+        { "id": "C", "text": "Pháp luật là công cụ để điều chỉnh các mối quan hệ giai cấp", "is_correct": false },
+        { "id": "D", "text": "Cả A, B, C đều đúng", "is_correct": true }
+      ]
+    },
+    {
+      "id": 155,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Nhà nước là?",
+      "options": [
+        { "id": "A", "text": "Một tổ chức xã hội có giai cấp", "is_correct": false },
+        { "id": "B", "text": "Một tổ chức xã hội có chủ quyền quốc gia", "is_correct": false },
+        { "id": "C", "text": "Một tổ chức xã hội có luật lệ", "is_correct": false },
+        { "id": "D", "text": "Cả A, B, C đều đúng", "is_correct": true }
+      ]
+    },
+    {
+      "id": 156,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Để đảm bảo nguyên tắc thống nhất trong việc xây dựng và áp dụng pháp luật thì cần phải?",
+      "options": [
+        { "id": "A", "text": "Tôn trọng tính tối cao của Hiến pháp và Luật", "is_correct": false },
+        { "id": "B", "text": "Đảm bảo tính thống nhất của pháp luật", "is_correct": false },
+        { "id": "C", "text": "Cả hai câu trên đều đúng", "is_correct": true },
+        { "id": "D", "text": "Cả hai câu trên đều sai", "is_correct": false }
+      ]
+    },
+    {
+      "id": 157,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Trong bộ máy nhà nước XHCN có sự?",
+      "options": [
+        { "id": "A", "text": "Phân quyền", "is_correct": false },
+        { "id": "B", "text": "Phân công, phân nhiệm", "is_correct": true },
+        { "id": "C", "text": "Phân công lao động", "is_correct": false },
+        { "id": "D", "text": "Tam quyền phân lập", "is_correct": false }
+      ]
+    },
+    {
+      "id": 158,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Chế tài có các loại nào sau đây?",
+      "options": [
+        { "id": "A", "text": "Chế tài hình sự và hành chính", "is_correct": false },
+        { "id": "B", "text": "Chế tài hình sự, hành chính và dân sự", "is_correct": false },
+        { "id": "C", "text": "Chế tài hình sự, hành chính, dân sự và kỷ luật", "is_correct": true },
+        { "id": "D", "text": "Tất cả các loại trên", "is_correct": false }
+      ]
+    },
+    {
+      "id": 159,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Người nào quảng cáo gian dối... đã bị xử phạt hành chính... mà còn vi phạm. Bộ phận giả định là?",
+      "options": [
+        { "id": "A", "text": "Người nào quảng cáo gian dối", "is_correct": false },
+        { "id": "B", "text": "Người nào quảng cáo gian dối... gây hậu quả nghiêm trọng", "is_correct": false },
+        { "id": "C", "text": "Người nào quảng cáo gian dối... đã bị xử phạt... mà còn vi phạm", "is_correct": true },
+        { "id": "D", "text": "Bị phạt tiền từ 10-100 triệu", "is_correct": false }
+      ]
+    },
+    {
+      "id": 160,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Năng lực của chủ thể bao gồm?",
+      "options": [
+        { "id": "A", "text": "Năng lực pháp luật và năng lực hành vi", "is_correct": true },
+        { "id": "B", "text": "Năng lực pháp luật và năng lực công dân", "is_correct": false },
+        { "id": "C", "text": "Năng lực hành vi và năng lực nhận thức", "is_correct": false },
+        { "id": "D", "text": "Năng lực pháp luật và năng lực nhận thức", "is_correct": false }
+      ]
+    },
+    {
+      "id": 161,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Chủ tịch nước CHXHCN Việt Nam có quyền?",
+      "options": [
+        { "id": "A", "text": "Bầu, miễn nhiệm Thủ tướng", "is_correct": false },
+        { "id": "B", "text": "Bầu, miễn nhiệm, bãi nhiệm Chánh án TAND tối cao, Viện trưởng VKSND tối cao (đề nghị Quốc hội)", "is_correct": false },
+        { "id": "C", "text": "Bổ nhiệm, miễn nhiệm, cách chức Chánh án TANDTC (thực tế là bổ nhiệm Thẩm phán TANDTC, Chánh án do QH bầu)", "is_correct": false },
+        { "id": "D", "text": "Theo tài liệu: Bầu, miễn nhiệm, bãi nhiệm Chánh án TAND tối cao / Viện trưởng VKSND tối cao", "is_correct": true }
+      ],
+      "explanation": "Lưu ý: Theo Hiến pháp, Chủ tịch nước 'đề nghị' Quốc hội bầu. Nhưng tài liệu ôn tập có thể viết tắt là 'Bầu/Miễn nhiệm'. Chọn đáp án sát nhất với quyền hạn về nhân sự tư pháp."
+    },
+    {
+      "id": 162,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Chọn nhận định SAI?",
+      "options": [
+        { "id": "A", "text": "Phó thủ tướng không nhất thiết phải là Đại biểu quốc hội (Đúng)", "is_correct": false },
+        { "id": "B", "text": "Năng lực pháp luật xuất hiện từ khi con người được sinh ra (Đúng)", "is_correct": false },
+        { "id": "C", "text": "Năng lực lao động xuất hiện từ khi công dân đủ 16 tuổi (Sai, 15 tuổi)", "is_correct": true },
+        { "id": "D", "text": "Năng lực pháp luật là tiền đề của năng lực hành vi (Đúng)", "is_correct": false }
+      ]
+    },
+    {
+      "id": 163,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Quy định thường gặp trong pháp luật hành chính?",
+      "options": [
+        { "id": "A", "text": "Quy định dứt khoát", "is_correct": true },
+        { "id": "B", "text": "Quy định tùy nghi", "is_correct": false },
+        { "id": "C", "text": "Quy định hướng dẫn", "is_correct": false },
+        { "id": "D", "text": "Tất cả đều sai", "is_correct": false }
+      ]
+    },
+    {
+      "id": 164,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Trường hợp nào sau đây KHÔNG nằm trong các trường hợp được hưởng thừa kế không phụ thuộc vào di chúc?",
+      "options": [
+        { "id": "A", "text": "Cha mẹ đã hết tuổi lao động", "is_correct": false },
+        { "id": "B", "text": "Vợ (chồng) đã hết tuổi lao động", "is_correct": false },
+        { "id": "C", "text": "Con chưa thành niên", "is_correct": false },
+        { "id": "D", "text": "Con đã thành niên nhưng có khả năng lao động", "is_correct": true }
+      ]
+    },
+    {
+      "id": 165,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Tình huống: Thợ sửa xe cố tình sửa phanh gian dối làm khách chết. Trách nhiệm pháp lý là?",
+      "options": [
+        { "id": "A", "text": "Trách nhiệm Hành chính", "is_correct": false },
+        { "id": "B", "text": "Trách nhiệm Hình sự", "is_correct": false },
+        { "id": "C", "text": "Trách nhiệm Hình sự và Dân sự", "is_correct": true },
+        { "id": "D", "text": "Trách nhiệm Kỷ luật", "is_correct": false }
+      ]
+    },
+    {
+      "id": 166,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Sử dụng lại tình huống trên, hành vi KHÁCH QUAN là?",
+      "options": [
+        { "id": "A", "text": "Sửa phanh xe không an toàn, gây chết người", "is_correct": true },
+        { "id": "B", "text": "Mong muốn khách quay lại (Mục đích)", "is_correct": false },
+        { "id": "C", "text": "Gian dối (Thủ đoạn)", "is_correct": false },
+        { "id": "D", "text": "Cả B và C", "is_correct": false }
+      ]
+    },
+    {
+      "id": 167,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Người thừa kế theo pháp luật hàng thứ nhất gồm những ai?",
+      "options": [
+        { "id": "A", "text": "Vợ, chồng, cha đẻ, mẹ đẻ, cha nuôi, mẹ nuôi, con đẻ, con nuôi", "is_correct": true },
+        { "id": "B", "text": "Ông nội, bà nội, ông ngoại, bà ngoại", "is_correct": false },
+        { "id": "C", "text": "Anh ruột, chị ruột, em ruột", "is_correct": false },
+        { "id": "D", "text": "Tất cả những người thân thích", "is_correct": false }
+      ]
+    },
+    {
+      "id": 168,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Người nào quảng cáo gian dối... đã bị xử phạt hành chính... mà còn vi phạm. Chế tài là?",
+      "options": [
+        { "id": "A", "text": "Phạt tiền từ 10 triệu đến 100 triệu đồng, cải tạo không giam giữ...", "is_correct": true },
+        { "id": "B", "text": "Người nào quảng cáo gian dối", "is_correct": false },
+        { "id": "C", "text": "Gây hậu quả nghiêm trọng", "is_correct": false },
+        { "id": "D", "text": "Đã bị kết án chưa xóa án tích", "is_correct": false }
+      ]
+    },
+    {
+      "id": 169,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Sự kiện pháp lý bao gồm?",
+      "options": [
+        { "id": "A", "text": "Sự biến pháp lý và Hành vi pháp lý", "is_correct": true },
+        { "id": "B", "text": "Sự biến pháp lý và Sự việc pháp lý", "is_correct": false },
+        { "id": "C", "text": "Hành vi hợp pháp và Hành vi bất hợp pháp", "is_correct": false },
+        { "id": "D", "text": "Thiên tai và Địch họa", "is_correct": false }
       ]
     }
   ]
