@@ -3,7 +3,7 @@
     "title": "Ngân Hàng Câu Hỏi Ôn Thi Pháp Luật Đại Cương K45 HK2 (Final Complete)",
     "creator": "Ngô Minh Khôi-DH19BQ",
     "description": "Dữ liệu đầy đủ tuyệt đối, bao gồm tất cả các câu hỏi điền khuyết, tình huống, trắc nghiệm và các ghi chú quan trọng trong tài liệu.",
-    "total_questions": 174
+    "total_questions": 186
   },
   "questions": [
     {
@@ -2062,6 +2062,133 @@
         { "id": "C", "text": "Tái thẩm", "is_correct": true },
         { "id": "D", "text": "Sơ thẩm lại", "is_correct": false }
       ]
+    },
+    {
+      "id": 175,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Nội dung của Quan hệ pháp luật được cấu thành bởi quyền pháp lí và nghĩa vụ pháp lí của các bên chủ thể mà việc thực hiện được đảm bảo và bảo vệ bằng sự ______ của nhà nước.",
+      "answer": "cưỡng chế",
+      "explanation": "Đặc điểm của quan hệ pháp luật là được nhà nước bảo đảm thực hiện bằng cưỡng chế."
+    },
+    {
+      "id": 176,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Quy phạm pháp luật là quy tắc xử sự chung... chỉ ra ______ và nghĩa vụ của các bên tham gia quan hệ xã hội mà nó điều chỉnh.",
+      "answer": "quyền",
+      "explanation": "Quy phạm pháp luật quy định quyền và nghĩa vụ của các bên."
+    },
+    {
+      "id": 177,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Cơ cấu của một Quy phạm pháp luật bao gồm 3 bộ phận nào?",
+      "options": [
+        { "id": "A", "text": "Giả định, Quy định, Chế tài", "is_correct": true },
+        { "id": "B", "text": "Chủ thể, Khách thể, Nội dung", "is_correct": false },
+        { "id": "C", "text": "Mặt chủ quan, Mặt khách quan, Chủ thể", "is_correct": false },
+        { "id": "D", "text": "Văn bản luật, Nghị định, Thông tư", "is_correct": false }
+      ],
+      "explanation": "Cấu trúc logic của một quy phạm pháp luật gồm: Giả định (tình huống), Quy định (cách xử sự), Chế tài (hậu quả)."
+    },
+    {
+      "id": 178,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Người thuộc hàng thừa kế thứ hai theo pháp luật là ai?",
+      "options": [
+        { "id": "A", "text": "Ông nội, bà nội, ông ngoại, bà ngoại", "is_correct": false },
+        { "id": "B", "text": "Anh ruột, chị ruột, em ruột của người chết", "is_correct": false },
+        { "id": "C", "text": "Cháu ruột của người chết mà người chết là bác ruột, chú ruột, cô ruột, dì ruột", "is_correct": false },
+        { "id": "D", "text": "Tất cả các đối tượng trên", "is_correct": true }
+      ]
+    },
+    {
+      "id": 179,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Thời hiệu truy cứu trách nhiệm hình sự đối với tội phạm ĐẶC BIỆT nghiêm trọng là bao nhiêu năm?",
+      "options": [
+        { "id": "A", "text": "10 năm", "is_correct": false },
+        { "id": "B", "text": "15 năm", "is_correct": false },
+        { "id": "C", "text": "20 năm", "is_correct": true },
+        { "id": "D", "text": "Không có thời hiệu", "is_correct": false }
+      ]
+    },
+    {
+      "id": 180,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Trong các biện pháp cưỡng chế sau, biện pháp nào KHÔNG phải là hình phạt của Luật Hình sự?",
+      "options": [
+        { "id": "A", "text": "Cảnh cáo", "is_correct": false },
+        { "id": "B", "text": "Phạt tiền", "is_correct": false },
+        { "id": "C", "text": "Tạm giữ, tạm giam", "is_correct": true },
+        { "id": "D", "text": "Tù có thời hạn", "is_correct": false }
+      ],
+      "explanation": "Tạm giữ, tạm giam là biện pháp ngăn chặn trong tố tụng hình sự, không phải là hình phạt (hình phạt chỉ được áp dụng khi có bản án của tòa án)."
+    },
+    {
+      "id": 181,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Giả định là phần nêu lên những ______, tình huống, điều kiện có thể xảy ra trong cuộc sống mà con người có thể gặp phải và cần xử sự theo quy định của pháp luật.",
+      "answer": "hoàn cảnh",
+      "explanation": "Định nghĩa về bộ phận Giả định trong Quy phạm pháp luật."
+    },
+    {
+      "id": 182,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Quy định là phần nêu ra các ______ buộc mọi người phải tuân theo khi ở vào hoàn cảnh, tình huống được nêu trong phần giả định.",
+      "answer": "quy tắc xử sự",
+      "explanation": "Định nghĩa về bộ phận Quy định trong Quy phạm pháp luật."
+    },
+    {
+      "id": 183,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Lỗi cố ý TRỰC TIẾP là trường hợp chủ thể nhận thức được hành vi nguy hiểm, thấy trước hậu quả và ______?",
+      "options": [
+        { "id": "A", "text": "Mong muốn hậu quả xảy ra", "is_correct": true },
+        { "id": "B", "text": "Tuy không mong muốn nhưng để mặc cho hậu quả xảy ra", "is_correct": false },
+        { "id": "C", "text": "Tin rằng hậu quả không xảy ra", "is_correct": false },
+        { "id": "D", "text": "Do cẩu thả nên không thấy trước hậu quả", "is_correct": false }
+      ]
+    },
+    {
+      "id": 184,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Lỗi cố ý GIÁN TIẾP là trường hợp chủ thể nhận thức được hành vi nguy hiểm, thấy trước hậu quả và ______?",
+      "options": [
+        { "id": "A", "text": "Mong muốn hậu quả xảy ra", "is_correct": false },
+        { "id": "B", "text": "Tuy không mong muốn nhưng để mặc cho hậu quả xảy ra", "is_correct": true },
+        { "id": "C", "text": "Tin rằng hậu quả sẽ không xảy ra", "is_correct": false },
+        { "id": "D", "text": "Không thấy trước hậu quả", "is_correct": false }
+      ]
+    },
+    {
+      "id": 185,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Củng cố và tăng cường pháp chế XHCN chính là củng cố và tăng cường hiệu lực của ______ trong hoạt động quản lí xã hội.",
+      "answer": "bộ máy nhà nước",
+      "explanation": "Mục đích của việc tăng cường pháp chế."
+    },
+    {
+      "id": 186,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Thời điểm có hiệu lực của Văn bản quy phạm pháp luật được quy định trong văn bản nhưng không sớm hơn bao nhiêu ngày kể từ ngày công bố/ký ban hành?",
+      "options": [
+        { "id": "A", "text": "15 ngày", "is_correct": false },
+        { "id": "B", "text": "30 ngày", "is_correct": false },
+        { "id": "C", "text": "45 ngày", "is_correct": true },
+        { "id": "D", "text": "60 ngày", "is_correct": false }
+      ],
+      "explanation": "Quy định về hiệu lực của VBQPPL (thường áp dụng cho văn bản cấp trung ương)."
     }
   ]
 }
