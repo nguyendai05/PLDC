@@ -2299,6 +2299,54 @@
         { "id": "B", "text": "Sai", "is_correct": true }
       ],
       "explanation": "Sai. Theo tài liệu: Củng cố pháp chế XHCN chính là củng cố và tăng cường hiệu lực của bộ máy nhà nước."
+    },
+    {
+      "id": 210,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Quy phạm pháp luật là quy tắc xử sự chung, có hiệu lực ______, được áp dụng lặp đi lặp lại nhiều lần đối với cơ quan, tổ chức, cá nhân trong phạm vi cả nước hoặc đơn vị hành chính nhất định.",
+      "answer": "bắt buộc chung",
+      "explanation": "Đặc điểm cơ bản nhất của quy phạm pháp luật."
+    },
+    {
+      "id": 211,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Hệ thống pháp luật bao gồm hệ thống cấu trúc của pháp luật và hệ thống ______.",
+      "answer": "văn bản quy phạm pháp luật",
+      "explanation": "Hai mặt của hệ thống pháp luật (bên trong và bên ngoài)."
+    },
+    {
+      "id": 212,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Thuế có vai trò quan trọng trong việc điều tiết nền kinh tế, hướng dẫn tiêu dùng và là nguồn thu chủ yếu của ______.",
+      "answer": "ngân sách nhà nước",
+      "explanation": "Vai trò quan trọng nhất của thuế."
+    },
+    {
+      "id": 213,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Vi phạm pháp luật là hành vi trái pháp luật, có lỗi, do chủ thể có ______ thực hiện, xâm hại các quan hệ xã hội được pháp luật bảo vệ.",
+      "answer": "năng lực trách nhiệm pháp lý",
+      "explanation": "Dấu hiệu về chủ thể của vi phạm pháp luật."
+    },
+    {
+      "id": 214,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Hình thức nhà nước là cách thức tổ chức quyền lực nhà nước và phương pháp thực hiện quyền lực nhà nước, bao gồm: hình thức chính thể, hình thức cấu trúc và ______.",
+      "answer": "chế độ chính trị",
+      "explanation": "Ba yếu tố cấu thành hình thức nhà nước."
+    },
+    {
+      "id": 215,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Quốc hội là cơ quan đại diện cao nhất của Nhân dân, cơ quan ______ cao nhất của nước Cộng hòa xã hội chủ nghĩa Việt Nam.",
+      "answer": "quyền lực nhà nước",
+      "explanation": "Vị trí pháp lý của Quốc hội trong bộ máy nhà nước."
     }
   ]
 }
