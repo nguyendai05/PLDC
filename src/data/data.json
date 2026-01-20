@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "Ngân Hàng Câu Hỏi Ôn Thi Pháp Luật Đại Cương K45 HK2 (Full)",
+    "title": "Ngân Hàng Câu Hỏi Ôn Thi Pháp Luật Đại Cương K45 HK2 (Final Complete)",
     "creator": "Ngô Minh Khôi-DH19BQ",
-    "description": "Dữ liệu đầy đủ bao gồm điền khuyết, tình huống và trắc nghiệm tổng hợp từ tài liệu ôn tập.",
-    "total_questions": 169
+    "description": "Dữ liệu đầy đủ tuyệt đối, bao gồm tất cả các câu hỏi điền khuyết, tình huống, trắc nghiệm và các ghi chú quan trọng trong tài liệu.",
+    "total_questions": 174
   },
   "questions": [
     {
@@ -2005,6 +2005,62 @@
         { "id": "B", "text": "Sự biến pháp lý và Sự việc pháp lý", "is_correct": false },
         { "id": "C", "text": "Hành vi hợp pháp và Hành vi bất hợp pháp", "is_correct": false },
         { "id": "D", "text": "Thiên tai và Địch họa", "is_correct": false }
+      ]
+    },
+    {
+      "id": 170,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Thời điểm có hiệu lực của VBQPPL được quy định trong văn bản nhưng không sớm hơn bao nhiêu ngày kể từ ngày công bố?",
+      "options": [
+        { "id": "A", "text": "15 ngày", "is_correct": false },
+        { "id": "B", "text": "30 ngày", "is_correct": false },
+        { "id": "C", "text": "45 ngày", "is_correct": true },
+        { "id": "D", "text": "60 ngày", "is_correct": false }
+      ]
+    },
+    {
+      "id": 171,
+      "type": "multiple_choice_best_answer",
+      "type_description": "Chọn câu trả lời đúng nhất",
+      "question": "Người được hưởng thừa kế thế vị là ai?",
+      "options": [
+        { "id": "A", "text": "Con của người để lại di sản", "is_correct": false },
+        { "id": "B", "text": "Cháu (con của con người để lại di sản chết trước hoặc chết cùng thời điểm với người để lại di sản)", "is_correct": true },
+        { "id": "C", "text": "Vợ hoặc chồng", "is_correct": false },
+        { "id": "D", "text": "Cha mẹ", "is_correct": false }
+      ]
+    },
+    {
+      "id": 172,
+      "type": "fill_in_blank",
+      "type_description": "Điền vào chỗ trống",
+      "question": "Pháp luật là hệ thống quy tắc xử sự mang tính ______ do Nhà nước ban hành và bảo đảm thực hiện.",
+      "answer": "bắt buộc chung",
+      "explanation": "Khái niệm pháp luật."
+    },
+    {
+      "id": 173,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Trong lịch sử loài người đã có mấy hình thức pháp luật?",
+      "options": [
+        { "id": "A", "text": "2 hình thức", "is_correct": false },
+        { "id": "B", "text": "3 hình thức (Tập quán pháp, Tiền lệ pháp, VBQPPL)", "is_correct": true },
+        { "id": "C", "text": "4 hình thức", "is_correct": false },
+        { "id": "D", "text": "1 hình thức", "is_correct": false }
+      ]
+    },
+    {
+      "id": 174,
+      "type": "multiple_choice_one_correct",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Khi có những tình tiết mới được phát hiện có thể làm thay đổi cơ bản nội dung của bản án đã có hiệu lực pháp luật, vụ án sẽ được giải quyết theo trình tự nào?",
+      "options": [
+        { "id": "A", "text": "Phúc thẩm", "is_correct": false },
+        { "id": "B", "text": "Giám đốc thẩm", "is_correct": false },
+        { "id": "C", "text": "Tái thẩm", "is_correct": true },
+        { "id": "D", "text": "Sơ thẩm lại", "is_correct": false }
       ]
     }
   ]
