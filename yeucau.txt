@@ -1,0 +1,985 @@
+Dưới đây là **một web ôn thi React** (chạy local) có đủ **4 loại câu hỏi** như bạn yêu cầu:
+
+1. **Đúng/Sai**
+2. **Chọn đáp án đúng**
+3. **Chọn đáp án đúng nhất** (dạng tình huống – chọn “lỗi”/“trách nhiệm” phù hợp nhất)
+4. **Điền khuyết** (lấy từ “Phần điền khuyết” trong tài liệu)
+
+App có: chọn chế độ ôn (theo loại/ theo phần), trộn câu, hiện giải thích, lưu tiến độ & câu sai vào **localStorage**, chế độ “Ôn câu sai”.
+
+Nguồn nội dung lấy từ tài liệu bạn gửi. 
+
+---
+
+## 1) Tạo project React (Vite)
+
+```bash
+npm create vite@latest pldc-quiz -- --template react-ts
+cd pldc-quiz
+npm i
+```
+
+Sau đó **thay nội dung** các file bên dưới đúng như mình đưa.
+
+Chạy:
+
+```bash
+npm run dev
+```
+
+---
+
+## 2) Code
+
+### `src/main.tsx`
+
+```tsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+### `src/index.css`
+
+```css
+:root{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #0f172a;
+  background: #f8fafc;
+}
+*{ box-sizing: border-box; }
+a{ color: inherit; }
+
+.container{
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.card{
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 24px rgba(15,23,42,0.06);
+}
+.row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.row > * { flex: 0 0 auto; }
+.spacer{ flex:1 1 auto; }
+
+h1{ margin: 0 0 8px 0; font-size: 20px; }
+h2{ margin: 0 0 10px 0; font-size: 16px; }
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #f1f5f9;
+  font-size: 12px;
+}
+
+.btn{
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  padding: 9px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn:hover{ background:#f8fafc; }
+.btn.primary{
+  background:#0f172a;
+  color:#fff;
+  border-color:#0f172a;
+}
+.btn.primary:hover{ filter: brightness(1.05); }
+.btn.danger{
+  background:#fff1f2;
+  border-color:#fecdd3;
+}
+.btn.danger:hover{ background:#ffe4e6; }
+
+.select, .input{
+  border: 1px solid #cbd5e1;
+  padding: 9px 10px;
+  border-radius: 10px;
+  background:#fff;
+}
+.input{ width: min(520px, 100%); }
+
+.opts{ display:flex; flex-direction:column; gap:10px; margin-top: 10px; }
+.opt{
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  background:#fff;
+}
+.opt:hover{ background:#f8fafc; }
+.opt.selected{ border-color:#0f172a; }
+.opt.correct{ border-color:#16a34a; background:#f0fdf4; }
+.opt.wrong{ border-color:#ef4444; background:#fff1f2; }
+
+.mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+.small{ font-size: 12px; color:#475569; }
+.hr{ height:1px; background:#e2e8f0; margin: 14px 0; }
+.kbd{
+  display:inline-block;
+  border:1px solid #cbd5e1;
+  background:#f8fafc;
+  border-bottom-width:2px;
+  padding:2px 6px;
+  border-radius:8px;
+  font-size: 12px;
+  margin-left: 6px;
+}
+```
+
+### `src/App.tsx`
+
+```tsx
+import { useEffect, useMemo, useRef, useState } from "react";
+
+type QType = "truefalse" | "single" | "best" | "fill";
+type Section = "PHAN_DIEN_KHUYET" | "PHAN_TINH_HUONG" | "PHAN_TRAC_NGHIEM" | "AUTO_DUNG_SAI";
+
+type BaseQ = {
+  id: string;
+  type: QType;
+  section: Section;
+  prompt: string;
+  explanation?: string;
+  tags?: string[];
+};
+
+type TFQ = BaseQ & { type: "truefalse"; answer: boolean };
+type MCQ = BaseQ & { type: "single" | "best"; options: string[]; answerIndex: number };
+type FillQ = BaseQ & { type: "fill"; answerText: string };
+
+type Question = TFQ | MCQ | FillQ;
+
+type Filters = {
+  type: "all" | QType;
+  section: "all" | Section;
+  mode: "random20" | "all" | "wrongOnly";
+  shuffle: boolean;
+};
+
+type Progress = {
+  seen: Record<string, number>;
+  wrong: Record<string, number>;
+  correct: Record<string, number>;
+  starred: Record<string, boolean>;
+};
+
+const LS_KEY = "pldc_quiz_progress_v1";
+
+function normalize(s: string) {
+  return s
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // bỏ dấu
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function shuffle<T>(arr: T[]) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/**
+ * Bộ câu hỏi “đã có đáp án chắc chắn” dựa trực tiếp từ tài liệu:
+ * - Phần điền khuyết: định nghĩa -> tạo câu điền khuyết
+ * - Phần tình huống: 1-8 -> tạo câu “đúng nhất”
+ * - Một số ý/ghi chú trong phần trắc nghiệm: 45 ngày hiệu lực VBQPPL, phân loại tội phạm, thời hiệu TNHS...
+ */
+const QUESTIONS: Question[] = [
+  // ====== FILL (Phần điền khuyết) ======
+  {
+    id: "fill-1",
+    type: "fill",
+    section: "PHAN_DIEN_KHUYET",
+    prompt:
+      "_____ là trạng thái tâm lí phản ánh thái độ tiêu cực của chủ thể thực hiện hành vi trái pháp luật đối với hành vi và hậu quả của hành vi đó.",
+    answerText: "Lỗi",
+    explanation: "Định nghĩa nằm trong Phần điền khuyết.",
+    tags: ["khái-niệm", "vppl"],
+  },
+  {
+    id: "fill-2",
+    type: "fill",
+    section: "PHAN_DIEN_KHUYET",
+    prompt:
+      "_____ là toàn bộ những quyền và nghĩa vụ pháp lí mà chủ thể pháp luật có thể có được theo quy định của pháp luật.",
+    answerText: "Năng lực pháp luật",
+    explanation: "Định nghĩa nằm trong Phần điền khuyết.",
+    tags: ["năng-lực"],
+  },
+  {
+    id: "fill-3",
+    type: "fill",
+    section: "PHAN_DIEN_KHUYET",
+    prompt:
+      "_____ là những khả năng của chủ thể pháp luật được nhà nước thừa nhận, bằng chính các hành vi của mình tham gia QHPL và thực hiện quyền/nghĩa vụ một cách độc lập.",
+    answerText: "Năng lực hành vi",
+    explanation: "Định nghĩa nằm trong Phần điền khuyết.",
+    tags: ["năng-lực"],
+  },
+  {
+    id: "fill-4",
+    type: "fill",
+    section: "PHAN_DIEN_KHUYET",
+    prompt:
+      "_____ là quy tắc xử sự chung có hiệu lực bắt buộc chung, được sử dụng nhiều lần trong cuộc sống, chỉ ra quyền và nghĩa vụ của các bên tham gia quan hệ xã hội mà nó điều chỉnh.",
+    answerText: "Quy phạm pháp luật",
+    explanation: "Định nghĩa nằm trong Phần điền khuyết.",
+    tags: ["qppl"],
+  },
+  {
+    id: "fill-5",
+    type: "fill",
+    section: "PHAN_DIEN_KHUYET",
+    prompt:
+      "_____ có tính cá biệt, một lần đối với cá nhân/tổ chức cụ thể trong trường hợp xác định.",
+    answerText: "Văn bản áp dụng pháp luật",
+    explanation: "Định nghĩa nằm trong Phần điền khuyết.",
+    tags: ["vbappl"],
+  },
+  {
+    id: "fill-6",
+    type: "fill",
+    section: "PHAN_DIEN_KHUYET",
+    prompt:
+      "_____ là phương tiện cần thiết để bảo vệ, củng cố và mở rộng dân chủ, phát huy quyền làm chủ của nhân dân lao động.",
+    answerText: "Pháp chế XHCN",
+    explanation: "Định nghĩa nằm trong Phần điền khuyết.",
+    tags: ["phap-che"],
+  },
+
+  // ====== TRUE/FALSE (AUTO dựa định nghĩa/ý trong tài liệu) ======
+  {
+    id: "tf-1",
+    type: "truefalse",
+    section: "AUTO_DUNG_SAI",
+    prompt: "Văn bản áp dụng pháp luật có tính cá biệt và chỉ áp dụng một lần cho chủ thể cụ thể.",
+    answer: true,
+    explanation: "Đúng theo định nghĩa trong Phần điền khuyết.",
+    tags: ["vbappl"],
+  },
+  {
+    id: "tf-2",
+    type: "truefalse",
+    section: "AUTO_DUNG_SAI",
+    prompt: "Quy phạm pháp luật là quy tắc xử sự chỉ áp dụng một lần trong một trường hợp cụ thể.",
+    answer: false,
+    explanation: "Sai: QPPL là quy tắc xử sự chung, có hiệu lực bắt buộc chung và được dùng nhiều lần.",
+    tags: ["qppl"],
+  },
+  {
+    id: "tf-3",
+    type: "truefalse",
+    section: "AUTO_DUNG_SAI",
+    prompt: "Lỗi cố ý trực tiếp: chủ thể nhận thức hành vi nguy hiểm, biết trước hậu quả và mong muốn hậu quả xảy ra.",
+    answer: true,
+    explanation: "Đúng theo phần phân loại lỗi (cố ý trực tiếp).",
+    tags: ["loi"],
+  },
+  {
+    id: "tf-4",
+    type: "truefalse",
+    section: "AUTO_DUNG_SAI",
+    prompt: "Lỗi cố ý gián tiếp: chủ thể không biết trước hậu quả có thể xảy ra.",
+    answer: false,
+    explanation: "Sai: cố ý gián tiếp vẫn biết trước hậu quả có thể xảy ra, tuy không mong muốn nhưng để mặc.",
+    tags: ["loi"],
+  },
+  {
+    id: "tf-5",
+    type: "truefalse",
+    section: "AUTO_DUNG_SAI",
+    prompt: "Hoạt động tương tự quy phạm pháp luật chỉ được tiến hành khi không có quy phạm trực tiếp điều chỉnh và cũng không có quy phạm tương tự.",
+    answer: true,
+    explanation: "Đúng theo nội dung trong Phần điền khuyết.",
+    tags: ["tuong-tu"],
+  },
+
+  // ====== SINGLE (Chọn đáp án đúng) ======
+  {
+    id: "single-1",
+    type: "single",
+    section: "PHAN_TRAC_NGHIEM",
+    prompt: "Nội dung của quan hệ pháp luật (QHPL) được cấu thành bởi:",
+    options: [
+      "Chỉ quyền pháp lí của các bên",
+      "Chỉ nghĩa vụ pháp lí của các bên",
+      "Quyền pháp lí và nghĩa vụ pháp lí của các bên chủ thể",
+      "Chỉ lợi ích vật chất mà các bên hướng tới",
+    ],
+    answerIndex: 2,
+    explanation: "Trong tài liệu: nội dung QHPL gồm quyền pháp lí và nghĩa vụ pháp lí của các bên.",
+    tags: ["qhpl"],
+  },
+  {
+    id: "single-2",
+    type: "single",
+    section: "PHAN_TRAC_NGHIEM",
+    prompt: "Văn bản áp dụng pháp luật là loại văn bản như thế nào?",
+    options: [
+      "Chứa quy tắc xử sự chung, áp dụng nhiều lần",
+      "Có tính cá biệt, áp dụng một lần cho chủ thể cụ thể",
+      "Do mọi cá nhân ban hành",
+      "Chỉ dùng trong nội bộ doanh nghiệp",
+    ],
+    answerIndex: 1,
+    explanation: "Theo định nghĩa trong Phần điền khuyết.",
+    tags: ["vbappl"],
+  },
+  {
+    id: "single-3",
+    type: "single",
+    section: "PHAN_TRAC_NGHIEM",
+    prompt: "Thời điểm phát sinh hiệu lực của VBQPPL được quy định trong văn bản nhưng không sớm hơn bao nhiêu ngày kể từ ngày công bố/ký ban hành?",
+    options: ["15 ngày", "30 ngày", "45 ngày", "60 ngày"],
+    answerIndex: 2,
+    explanation: "Tài liệu có ghi: không sớm hơn 45 ngày.",
+    tags: ["vbqppl"],
+  },
+  {
+    id: "single-4",
+    type: "single",
+    section: "PHAN_TRAC_NGHIEM",
+    prompt: "Căn cứ để phân loại tội phạm là:",
+    options: [
+      "Mức thấp nhất của khung hình phạt",
+      "Mức cao nhất của khung hình phạt",
+      "Thiệt hại thực tế xảy ra",
+      "Động cơ phạm tội",
+    ],
+    answerIndex: 1,
+    explanation: "Tài liệu nhấn mạnh: căn cứ phân loại là MỨC CAO NHẤT của khung hình phạt.",
+    tags: ["hinh-su"],
+  },
+  {
+    id: "single-5",
+    type: "single",
+    section: "PHAN_TRAC_NGHIEM",
+    prompt: "Tội phạm nghiêm trọng có mức cao nhất của khung hình phạt đến:",
+    options: ["3 năm tù", "7 năm tù", "15 năm tù", "Trên 15 năm tù"],
+    answerIndex: 1,
+    explanation: "Theo bảng trong tài liệu: nghiêm trọng đến 7 năm tù.",
+    tags: ["hinh-su"],
+  },
+  {
+    id: "single-6",
+    type: "single",
+    section: "PHAN_TRAC_NGHIEM",
+    prompt: "Thời hiệu truy cứu trách nhiệm hình sự đối với tội phạm nghiêm trọng là:",
+    options: ["5 năm", "10 năm", "15 năm", "20 năm"],
+    answerIndex: 1,
+    explanation: "Theo phần thời hiệu: nghiêm trọng là 10 năm.",
+    tags: ["hinh-su"],
+  },
+
+  // ====== BEST (Tình huống – chọn đúng nhất) ======
+  {
+    id: "best-1",
+    type: "best",
+    section: "PHAN_TINH_HUONG",
+    prompt:
+      "Tình huống: Ông A phóng nhanh vượt ẩu gây tai nạn làm chết người. Lỗi ở đây là gì?",
+    options: ["Cố ý trực tiếp", "Cố ý gián tiếp", "Vô ý do cẩu thả", "Vô ý do quá tự tin"],
+    answerIndex: 3,
+    explanation: "Theo đáp án tình huống trong tài liệu: vô ý do quá tự tin.",
+    tags: ["loi", "tinh-huong"],
+  },
+  {
+    id: "best-2",
+    type: "best",
+    section: "PHAN_TINH_HUONG",
+    prompt:
+      "Tình huống: Người lái xe uống rượu say gây tai nạn làm chết người. Lỗi ở đây là gì?",
+    options: ["Cố ý trực tiếp", "Cố ý gián tiếp", "Vô ý do cẩu thả", "Vô ý do quá tự tin"],
+    answerIndex: 2,
+    explanation: "Theo đáp án tình huống trong tài liệu: vô ý do cẩu thả.",
+    tags: ["loi", "tinh-huong"],
+  },
+  {
+    id: "best-3",
+    type: "best",
+    section: "PHAN_TINH_HUONG",
+    prompt:
+      "Tình huống: Ông M giăng điện 220V để bảo vệ cây, người khác vướng vào bị giật chết. Lỗi của ông M là gì?",
+    options: ["Cố ý trực tiếp", "Cố ý gián tiếp", "Vô ý do cẩu thả", "Vô ý do quá tự tin"],
+    answerIndex: 1,
+    explanation: "Theo đáp án tình huống trong tài liệu: cố ý gián tiếp.",
+    tags: ["loi", "tinh-huong"],
+  },
+  {
+    id: "best-4",
+    type: "best",
+    section: "PHAN_TINH_HUONG",
+    prompt:
+      "Tình huống: Thợ sửa xe cố tình sửa phanh không an toàn để khách quay lại, khách tử vong do phanh. Lỗi của thợ sửa xe là gì?",
+    options: ["Cố ý trực tiếp", "Cố ý gián tiếp", "Vô ý do cẩu thả", "Không có lỗi"],
+    answerIndex: 1,
+    explanation: "Theo đáp án tình huống trong tài liệu: cố ý gián tiếp.",
+    tags: ["loi", "tinh-huong"],
+  },
+  {
+    id: "best-5",
+    type: "best",
+    section: "PHAN_TINH_HUONG",
+    prompt:
+      "Tình huống: Bác sĩ mổ và để quên dao mổ trong bệnh nhân dẫn đến bệnh nhân chết. Lỗi của bác sĩ là gì?",
+    options: ["Cố ý trực tiếp", "Cố ý gián tiếp", "Vô ý do cẩu thả", "Vô ý do quá tự tin"],
+    answerIndex: 2,
+    explanation: "Theo đáp án tình huống trong tài liệu: vô ý do cẩu thả.",
+    tags: ["loi", "tinh-huong"],
+  },
+  {
+    id: "best-6",
+    type: "best",
+    section: "PHAN_TINH_HUONG",
+    prompt:
+      "Tình huống: Bác sĩ tiêm kháng sinh nhưng bỏ qua quy trình kiểm tra phản ứng, bệnh nhân sốc thuốc và chết. Lỗi ở đây là gì?",
+    options: ["Cố ý trực tiếp", "Cố ý gián tiếp", "Vô ý do cẩu thả", "Không có lỗi"],
+    answerIndex: 2,
+    explanation: "Theo đáp án tình huống trong tài liệu: vô ý do cẩu thả.",
+    tags: ["loi", "tinh-huong"],
+  },
+  {
+    id: "best-7",
+    type: "best",
+    section: "PHAN_TINH_HUONG",
+    prompt:
+      "Tình huống: Ông A vận chuyển gia cầm bị bệnh, bị cơ quan có thẩm quyền phát hiện và buộc tiêu hủy. Đây là biện pháp chế tài gì?",
+    options: ["Dân sự", "Hình sự", "Hành chính", "Kỷ luật"],
+    answerIndex: 2,
+    explanation: "Theo đáp án tình huống trong tài liệu: chế tài hành chính.",
+    tags: ["che-tai", "tinh-huong"],
+  },
+];
+
+function typeLabel(t: QType | "all") {
+  switch (t) {
+    case "truefalse":
+      return "Đúng/Sai";
+    case "single":
+      return "Chọn đáp án đúng";
+    case "best":
+      return "Chọn đáp án đúng nhất";
+    case "fill":
+      return "Điền khuyết";
+    default:
+      return "Tất cả";
+  }
+}
+
+function sectionLabel(s: Section | "all") {
+  switch (s) {
+    case "PHAN_DIEN_KHUYET":
+      return "Phần điền khuyết";
+    case "PHAN_TINH_HUONG":
+      return "Phần tình huống";
+    case "PHAN_TRAC_NGHIEM":
+      return "Phần trắc nghiệm (trích ý chắc chắn)";
+    case "AUTO_DUNG_SAI":
+      return "Đúng/Sai (tạo từ định nghĩa)";
+    default:
+      return "Tất cả";
+  }
+}
+
+function loadProgress(): Progress {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (!raw) throw new Error("no data");
+    const parsed = JSON.parse(raw) as Progress;
+    return {
+      seen: parsed.seen ?? {},
+      wrong: parsed.wrong ?? {},
+      correct: parsed.correct ?? {},
+      starred: parsed.starred ?? {},
+    };
+  } catch {
+    return { seen: {}, wrong: {}, correct: {}, starred: {} };
+  }
+}
+
+function saveProgress(p: Progress) {
+  localStorage.setItem(LS_KEY, JSON.stringify(p));
+}
+
+export default function App() {
+  const [filters, setFilters] = useState<Filters>({
+    type: "all",
+    section: "all",
+    mode: "random20",
+    shuffle: true,
+  });
+
+  const [progress, setProgress] = useState<Progress>(() => loadProgress());
+
+  useEffect(() => saveProgress(progress), [progress]);
+
+  const filtered = useMemo(() => {
+    let list = QUESTIONS;
+
+    if (filters.type !== "all") list = list.filter((q) => q.type === filters.type);
+    if (filters.section !== "all") list = list.filter((q) => q.section === filters.section);
+
+    if (filters.mode === "wrongOnly") {
+      list = list.filter((q) => (progress.wrong[q.id] ?? 0) > (progress.correct[q.id] ?? 0));
+    }
+
+    if (filters.shuffle) list = shuffle(list);
+    if (filters.mode === "random20") list = list.slice(0, Math.min(20, list.length));
+
+    return list;
+  }, [filters, progress.correct, progress.wrong]);
+
+  const [idx, setIdx] = useState(0);
+  const current = filtered[idx];
+
+  // state per question
+  const [selected, setSelected] = useState<number | null>(null);
+  const [tfSelected, setTfSelected] = useState<boolean | null>(null);
+  const [fillValue, setFillValue] = useState("");
+  const [revealed, setRevealed] = useState(false);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  // reset when list changes or idx changes
+  useEffect(() => {
+    setSelected(null);
+    setTfSelected(null);
+    setFillValue("");
+    setRevealed(false);
+    // focus input for fill
+    if (current?.type === "fill") {
+      setTimeout(() => inputRef.current?.focus(), 50);
+    }
+  }, [idx, current?.id, current?.type]);
+
+  useEffect(() => {
+    // Khi thay đổi filters -> quay về câu 1
+    setIdx(0);
+  }, [filters.type, filters.section, filters.mode, filters.shuffle]);
+
+  const total = filtered.length;
+
+  const stats = useMemo(() => {
+    const seen = Object.values(progress.seen).reduce((a, b) => a + b, 0);
+    const correct = Object.values(progress.correct).reduce((a, b) => a + b, 0);
+    const wrong = Object.values(progress.wrong).reduce((a, b) => a + b, 0);
+    return { seen, correct, wrong };
+  }, [progress]);
+
+  function markSeen(qid: string) {
+    setProgress((p) => ({
+      ...p,
+      seen: { ...p.seen, [qid]: (p.seen[qid] ?? 0) + 1 },
+    }));
+  }
+
+  function markCorrect(qid: string) {
+    setProgress((p) => ({
+      ...p,
+      correct: { ...p.correct, [qid]: (p.correct[qid] ?? 0) + 1 },
+    }));
+  }
+
+  function markWrong(qid: string) {
+    setProgress((p) => ({
+      ...p,
+      wrong: { ...p.wrong, [qid]: (p.wrong[qid] ?? 0) + 1 },
+    }));
+  }
+
+  function toggleStar(qid: string) {
+    setProgress((p) => ({
+      ...p,
+      starred: { ...p.starred, [qid]: !p.starred[qid] },
+    }));
+  }
+
+  function isAnsweredReady() {
+    if (!current) return false;
+    if (current.type === "fill") return fillValue.trim().length > 0;
+    if (current.type === "truefalse") return tfSelected !== null;
+    return selected !== null;
+  }
+
+  function check() {
+    if (!current) return;
+    if (!isAnsweredReady()) return;
+
+    markSeen(current.id);
+
+    let ok = false;
+
+    if (current.type === "fill") {
+      ok = normalize(fillValue) === normalize(current.answerText);
+    } else if (current.type === "truefalse") {
+      ok = tfSelected === current.answer;
+    } else {
+      ok = selected === current.answerIndex;
+    }
+
+    if (ok) markCorrect(current.id);
+    else markWrong(current.id);
+
+    setRevealed(true);
+  }
+
+  function next() {
+    if (idx < total - 1) setIdx((v) => v + 1);
+  }
+
+  function prev() {
+    if (idx > 0) setIdx((v) => v - 1);
+  }
+
+  // keyboard shortcuts
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (!current) return;
+
+      // Enter: check / next
+      if (e.key === "Enter") {
+        if (!revealed) check();
+        else next();
+      }
+
+      // Backspace: prev
+      if (e.key === "Backspace" && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        prev();
+      }
+
+      // 1-4 chọn đáp án
+      if ((current.type === "single" || current.type === "best") && !revealed) {
+        const n = Number(e.key);
+        if (!Number.isNaN(n) && n >= 1 && n <= current.options.length) {
+          setSelected(n - 1);
+        }
+      }
+
+      // T/F nhanh: T hoặc F
+      if (current.type === "truefalse" && !revealed) {
+        if (e.key.toLowerCase() === "t") setTfSelected(true);
+        if (e.key.toLowerCase() === "f") setTfSelected(false);
+      }
+    }
+
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [current, revealed, idx, total]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const empty = total === 0;
+
+  return (
+    <div className="container">
+      <div className="card">
+        <div className="row">
+          <div>
+            <h1>PLĐC – Web ôn thi (React)</h1>
+            <div className="row" style={{ marginTop: 6 }}>
+              <span className="badge">Bộ đề: {total} câu</span>
+              <span className="badge">
+                Loại: <b>{typeLabel(filters.type)}</b>
+              </span>
+              <span className="badge">
+                Phần: <b>{sectionLabel(filters.section)}</b>
+              </span>
+            </div>
+            <div className="small" style={{ marginTop: 8 }}>
+              Phím tắt: <span className="kbd">Enter</span> kiểm tra/qua câu |{" "}
+              <span className="kbd">1-4</span> chọn đáp án |{" "}
+              <span className="kbd">T</span>/<span className="kbd">F</span> đúng/sai |{" "}
+              <span className="kbd">Ctrl+Backspace</span> quay lại
+            </div>
+          </div>
+          <div className="spacer" />
+          <div className="row">
+            <button
+              className="btn danger"
+              onClick={() => {
+                localStorage.removeItem(LS_KEY);
+                setProgress({ seen: {}, wrong: {}, correct: {}, starred: {} });
+              }}
+              title="Xóa tiến độ"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <div className="hr" />
+
+        {/* SETTINGS */}
+        <div className="row" style={{ gap: 10 }}>
+          <label className="small">Chế độ</label>
+          <select
+            className="select"
+            value={filters.mode}
+            onChange={(e) => setFilters((f) => ({ ...f, mode: e.target.value as Filters["mode"] }))}
+          >
+            <option value="random20">Random 20 câu</option>
+            <option value="all">Toàn bộ theo lọc</option>
+            <option value="wrongOnly">Ôn câu sai</option>
+          </select>
+
+          <label className="small">Loại</label>
+          <select
+            className="select"
+            value={filters.type}
+            onChange={(e) => setFilters((f) => ({ ...f, type: e.target.value as Filters["type"] }))}
+          >
+            <option value="all">Tất cả</option>
+            <option value="truefalse">Đúng/Sai</option>
+            <option value="single">Chọn đáp án đúng</option>
+            <option value="best">Chọn đáp án đúng nhất</option>
+            <option value="fill">Điền khuyết</option>
+          </select>
+
+          <label className="small">Phần</label>
+          <select
+            className="select"
+            value={filters.section}
+            onChange={(e) =>
+              setFilters((f) => ({ ...f, section: e.target.value as Filters["section"] }))
+            }
+          >
+            <option value="all">Tất cả</option>
+            <option value="PHAN_DIEN_KHUYET">Phần điền khuyết</option>
+            <option value="PHAN_TINH_HUONG">Phần tình huống</option>
+            <option value="PHAN_TRAC_NGHIEM">Phần trắc nghiệm (ý chắc chắn)</option>
+            <option value="AUTO_DUNG_SAI">Đúng/Sai (tạo từ định nghĩa)</option>
+          </select>
+
+          <label className="small">
+            <input
+              type="checkbox"
+              checked={filters.shuffle}
+              onChange={(e) => setFilters((f) => ({ ...f, shuffle: e.target.checked }))}
+              style={{ marginRight: 6 }}
+            />
+            Trộn câu
+          </label>
+
+          <div className="spacer" />
+
+          <div className="row">
+            <span className="badge">Đã làm: {stats.seen}</span>
+            <span className="badge">Đúng: {stats.correct}</span>
+            <span className="badge">Sai: {stats.wrong}</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ height: 14 }} />
+
+      {/* QUIZ */}
+      <div className="card">
+        {empty ? (
+          <div>
+            <h2>Không có câu nào theo bộ lọc hiện tại</h2>
+            <div className="small">Thử đổi “Chế độ / Loại / Phần”.</div>
+          </div>
+        ) : (
+          <>
+            <div className="row">
+              <span className="badge">
+                Câu <b>{idx + 1}</b>/<b>{total}</b>
+              </span>
+              <span className="badge">{typeLabel(current.type)}</span>
+              <span className="badge">{sectionLabel(current.section)}</span>
+              {progress.starred[current.id] ? (
+                <button className="btn" onClick={() => toggleStar(current.id)} title="Bỏ đánh dấu">
+                  ★ Đã đánh dấu
+                </button>
+              ) : (
+                <button className="btn" onClick={() => toggleStar(current.id)} title="Đánh dấu câu">
+                  ☆ Đánh dấu
+                </button>
+              )}
+              <div className="spacer" />
+              <span className="small mono">id: {current.id}</span>
+            </div>
+
+            <div className="hr" />
+
+            <div style={{ fontSize: 16, lineHeight: 1.45 }}>
+              {current.prompt}
+            </div>
+
+            {/* Render per type */}
+            {current.type === "fill" && (
+              <div style={{ marginTop: 12 }}>
+                <input
+                  ref={inputRef}
+                  className="input"
+                  placeholder="Nhập đáp án..."
+                  value={fillValue}
+                  onChange={(e) => setFillValue(e.target.value)}
+                  disabled={revealed}
+                />
+                {revealed && (
+                  <div className="small" style={{ marginTop: 8 }}>
+                    Đáp án đúng: <b>{current.answerText}</b>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {current.type === "truefalse" && (
+              <div className="row" style={{ marginTop: 12 }}>
+                <button
+                  className={"btn " + (tfSelected === true ? "primary" : "")}
+                  onClick={() => !revealed && setTfSelected(true)}
+                  disabled={revealed}
+                >
+                  Đúng <span className="kbd">T</span>
+                </button>
+                <button
+                  className={"btn " + (tfSelected === false ? "primary" : "")}
+                  onClick={() => !revealed && setTfSelected(false)}
+                  disabled={revealed}
+                >
+                  Sai <span className="kbd">F</span>
+                </button>
+
+                {revealed && (
+                  <span className="badge">
+                    Kết quả:{" "}
+                    <b>{current.answer ? "Đúng" : "Sai"}</b>
+                  </span>
+                )}
+              </div>
+            )}
+
+            {(current.type === "single" || current.type === "best") && (
+              <div className="opts">
+                {current.options.map((op, i) => {
+                  const isSel = selected === i;
+                  const isCorrect = revealed && i === current.answerIndex;
+                  const isWrong = revealed && isSel && i !== current.answerIndex;
+
+                  const cls = [
+                    "opt",
+                    isSel ? "selected" : "",
+                    isCorrect ? "correct" : "",
+                    isWrong ? "wrong" : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ");
+
+                  return (
+                    <div
+                      key={i}
+                      className={cls}
+                      onClick={() => {
+                        if (revealed) return;
+                        setSelected(i);
+                      }}
+                      role="button"
+                      tabIndex={0}
+                      title="Click để chọn"
+                    >
+                      <span className="badge" style={{ marginRight: 8 }}>
+                        {i + 1}
+                      </span>
+                      {op}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Explanation */}
+            {revealed && (
+              <>
+                <div className="hr" />
+                <div>
+                  <div className="badge">Giải thích</div>
+                  <div style={{ marginTop: 8, lineHeight: 1.5 }}>
+                    {current.explanation ?? "—"}
+                  </div>
+                </div>
+              </>
+            )}
+
+            <div className="hr" />
+
+            <div className="row">
+              <button className="btn" onClick={prev} disabled={idx === 0}>
+                ← Quay lại
+              </button>
+
+              {!revealed ? (
+                <button className="btn primary" onClick={check} disabled={!isAnsweredReady()}>
+                  Kiểm tra <span className="kbd">Enter</span>
+                </button>
+              ) : (
+                <button className="btn primary" onClick={next} disabled={idx >= total - 1}>
+                  Câu tiếp <span className="kbd">Enter</span>
+                </button>
+              )}
+
+              <div className="spacer" />
+
+              <div className="small">
+                Mẹo: làm sai -> bật <b>“Ôn câu sai”</b> để cày lại.
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+
+      <div style={{ height: 14 }} />
+
+      <div className="card">
+        <h2>Cách mở rộng bộ câu hỏi</h2>
+        <div className="small" style={{ lineHeight: 1.55 }}>
+          Bạn chỉ cần thêm câu vào mảng <span className="mono">QUESTIONS</span> trong{" "}
+          <span className="mono">src/App.tsx</span>.  
+          Gợi ý: bạn có thể tự “chẻ” thêm câu từ phần trắc nghiệm trong tài liệu,
+          nhưng để chắc chắn, hãy chỉ thêm những câu mà bạn có đáp án/giải thích rõ từ tài liệu.
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+## 3) Dùng như thế nào để ôn hiệu quả
+
+* Chọn **Random 20 câu** → làm nhanh lấy nhịp.
+* Chuyển sang **Ôn câu sai** → cày lại phần hay nhầm (rất hiệu quả trước thi).
+* Lọc theo **Loại**:
+
+  * **Điền khuyết**: thuộc định nghĩa (cực hay ra)
+  * **Đúng/Sai**: kiểm tra hiểu đúng bản chất
+  * **Tình huống**: luyện phân biệt *cố ý/vô ý*
+  * **Trắc nghiệm (ý chắc chắn)**: ôn mốc “45 ngày”, phân loại tội phạm, thời hiệu…
+
+---
+
+Nếu bạn muốn, mình có thể **bổ sung thêm 50–100 câu** (vẫn đúng 4 loại) bằng cách chuyển thêm nội dung trắc nghiệm trong tài liệu thành bộ câu có **đáp án + giải thích rõ ràng** (ưu tiên những câu trong tài liệu đã gợi ý đáp án hoặc có ghi chú). 
