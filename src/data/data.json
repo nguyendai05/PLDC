@@ -3,7 +3,7 @@
     "title": "Ngân Hàng Câu Hỏi Ôn Thi Pháp Luật Đại Cương K45 HK2 (Final Complete)",
     "creator": "Ngô Minh Khôi-DH19BQ",
     "description": "Dữ liệu đầy đủ tuyệt đối, bao gồm tất cả các câu hỏi điền khuyết, tình huống, trắc nghiệm và các ghi chú quan trọng trong tài liệu.",
-    "total_questions": 186
+    "total_questions": 196
   },
   "questions": [
     {
@@ -2189,6 +2189,116 @@
         { "id": "D", "text": "60 ngày", "is_correct": false }
       ],
       "explanation": "Quy định về hiệu lực của VBQPPL (thường áp dụng cho văn bản cấp trung ương)."
+    },
+    {
+      "id": 187,
+      "type": "true_false",
+      "type_description": "Chọn đúng hoặc sai",
+      "question": "Trong Nhà nước pháp quyền XHCN Việt Nam, quyền lực nhà nước là sự phân chia độc lập hoàn toàn giữa các nhánh lập pháp, hành pháp và tư pháp?",
+      "options": [
+        { "id": "A", "text": "Đúng", "is_correct": false },
+        { "id": "B", "text": "Sai", "is_correct": true }
+      ],
+      "explanation": "Sai. Theo tài liệu: Quyền lực nhà nước là thống nhất, có sự phân công, phối hợp và kiểm soát (không tam quyền phân lập tuyệt đối)."
+    },
+    {
+      "id": 188,
+      "type": "true_false",
+      "type_description": "Chọn đúng hoặc sai",
+      "question": "Quy phạm pháp luật là những quy tắc xử sự mang tính cá biệt, chỉ được áp dụng một lần cho một đối tượng cụ thể?",
+      "options": [
+        { "id": "A", "text": "Đúng", "is_correct": false },
+        { "id": "B", "text": "Sai", "is_correct": true }
+      ],
+      "explanation": "Sai. Đó là đặc điểm của Văn bản áp dụng pháp luật. Quy phạm pháp luật mang tính bắt buộc CHUNG và áp dụng NHIỀU LẦN."
+    },
+    {
+      "id": 189,
+      "type": "true_false",
+      "type_description": "Chọn đúng hoặc sai",
+      "question": "Sự biến pháp lý là những sự kiện xảy ra trong thực tế không phụ thuộc vào ý chí của con người (như thiên tai, cái chết tự nhiên).",
+      "options": [
+        { "id": "A", "text": "Đúng", "is_correct": true },
+        { "id": "B", "text": "Sai", "is_correct": false }
+      ],
+      "explanation": "Đúng. Sự biến pháp lý nằm ngoài ý chí chủ quan."
+    },
+    {
+      "id": 190,
+      "type": "true_false",
+      "type_description": "Chọn đúng hoặc sai",
+      "question": "Mọi cá nhân ngay từ khi mới sinh ra đều đã có Năng lực hành vi dân sự.",
+      "options": [
+        { "id": "A", "text": "Đúng", "is_correct": false },
+        { "id": "B", "text": "Sai", "is_correct": true }
+      ],
+      "explanation": "Sai. Khi mới sinh ra chỉ có Năng lực pháp luật. Năng lực hành vi chỉ xuất hiện khi đạt độ tuổi nhất định và có khả năng nhận thức."
+    },
+    {
+      "id": 191,
+      "type": "true_false",
+      "type_description": "Chọn đúng hoặc sai",
+      "question": "Lỗi vô ý do cẩu thả là trường hợp chủ thể không thấy trước hậu quả nguy hiểm của hành vi, mặc dù theo quy định pháp luật thì buộc phải thấy trước hoặc có thể thấy trước.",
+      "options": [
+        { "id": "A", "text": "Đúng", "is_correct": true },
+        { "id": "B", "text": "Sai", "is_correct": false }
+      ],
+      "explanation": "Đúng. Đây là định nghĩa của lỗi vô ý do cẩu thả."
+    },
+    {
+      "id": 192,
+      "type": "true_false",
+      "type_description": "Chọn đúng hoặc sai",
+      "question": "Hình phạt 'Trục xuất' có thể áp dụng cho công dân Việt Nam phạm tội.",
+      "options": [
+        { "id": "A", "text": "Đúng", "is_correct": false },
+        { "id": "B", "text": "Sai", "is_correct": true }
+      ],
+      "explanation": "Sai. Theo tài liệu, Trục xuất là hình phạt chỉ áp dụng với người nước ngoài."
+    },
+    {
+      "id": 193,
+      "type": "true_false",
+      "type_description": "Chọn đúng hoặc sai",
+      "question": "Văn bản quy phạm pháp luật có thể có hiệu lực ngay lập tức tại thời điểm ký ban hành?",
+      "options": [
+        { "id": "A", "text": "Đúng", "is_correct": false },
+        { "id": "B", "text": "Sai", "is_correct": true }
+      ],
+      "explanation": "Sai. Theo tài liệu: Thời điểm có hiệu lực không sớm hơn 45 ngày kể từ ngày công bố hoặc ký ban hành."
+    },
+    {
+      "id": 194,
+      "type": "true_false",
+      "type_description": "Chọn đúng hoặc sai",
+      "question": "Con dâu hoặc con rể là người thuộc hàng thừa kế thứ nhất theo pháp luật của cha mẹ vợ/chồng.",
+      "options": [
+        { "id": "A", "text": "Đúng", "is_correct": false },
+        { "id": "B", "text": "Sai", "is_correct": true }
+      ],
+      "explanation": "Sai. Hàng thừa kế thứ nhất chỉ gồm: Vợ, chồng, cha đẻ, mẹ đẻ, cha nuôi, mẹ nuôi, con đẻ, con nuôi. Con dâu/rể không thuộc hàng thừa kế theo pháp luật."
+    },
+    {
+      "id": 195,
+      "type": "true_false",
+      "type_description": "Chọn đúng hoặc sai",
+      "question": "Người say rượu lái xe gây tai nạn được coi là không có lỗi vì họ không nhận thức được hành vi của mình tại thời điểm đó.",
+      "options": [
+        { "id": "A", "text": "Đúng", "is_correct": false },
+        { "id": "B", "text": "Sai", "is_correct": true }
+      ],
+      "explanation": "Sai. Pháp luật quy định người say rượu vẫn phải chịu trách nhiệm (thường là lỗi vô ý do cẩu thả hoặc cố ý gián tiếp tùy trường hợp tự đưa mình vào tình trạng say)."
+    },
+    {
+      "id": 196,
+      "type": "true_false",
+      "type_description": "Chọn câu trả lời đúng",
+      "question": "Tăng cường pháp chế XHCN chính là biện pháp làm giảm sức mạnh cưỡng chế của bộ máy nhà nước để mở rộng dân chủ.",
+      "options": [
+        { "id": "A", "text": "Đúng", "is_correct": false },
+        { "id": "B", "text": "Sai", "is_correct": true }
+      ],
+      "explanation": "Sai. Theo tài liệu: Củng cố pháp chế XHCN chính là củng cố và tăng cường hiệu lực của bộ máy nhà nước."
     }
   ]
 }
